@@ -1,11 +1,17 @@
 import './App.css';
+import { Header } from './ui/Header.jsx';
+import { Sidebar } from './ui/Sidebar.jsx';
+import { Outlet } from 'react-router-dom';
 
 function App() {
 	return (
-		<main className="container mx-auto p-4">
-			<h1 className="text-2xl font-bold mb-4">Hotel Management App</h1>
-			<nav></nav>
-		</main>
+		<div className="grid grid-cols-[16rem_1fr] grid-rows-[auto_1fr] h-screen px-5">
+			<Header />
+			<Sidebar />
+			<main>
+				<Outlet />
+			</main>
+		</div>
 	);
 }
 
