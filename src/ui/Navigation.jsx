@@ -31,11 +31,11 @@ export const Navigation = () => {
 				</li>
 				<li>
 					<NavLink
-						to="/rooms"
+						to="/apartments"
 						className="hover:text-accent-400 transition-colors flex items-center gap-4 font-semibold text-primary-200"
 					>
 						<HiHomeModern />
-						<span>Rooms</span>
+						<span>Apartments</span>
 					</NavLink>
 				</li>
 				<li>
