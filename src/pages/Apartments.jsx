@@ -1,8 +1,9 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { getApartments } from '../services/apiApartments';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { getApartments, deleteApartment } from '../services/apiApartments';
 
 export const Apartments = () => {
+	const queryClient = useQueryClient();
 	const {
 		isLoading,
 		data: apartments,
@@ -12,6 +13,18 @@ export const Apartments = () => {
 		queryFn: getApartments,
 	});
 
+	const { isLoading: isDeleting, mutate: deleteApartmentMutation } =
+		useMutation({
+			mutationFn: (id) => deleteApartment(id),
+			onSuccess: () => {
+				queryClient.invalidateQueries({
+					queryKey: ['apartments'],
+				});
+			},
+			onError: (error) => {
+				alert('Error deleting apartment:', error);
+			},
+		});
 	if (isLoading) {
 		return <div>Loading...</div>;
 	}
@@ -65,7 +78,8 @@ export const Apartments = () => {
 								</td>
 								<td className="block md:table-cell px-6 py-4 text-center">
 									<button
-										onClick={() => console.log}
+										onClick={() => deleteApartmentMutation(apartment.id)}
+										disabled={isDeleting}
 										className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
 									>
 										Delete
