@@ -1,6 +1,7 @@
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getApartments, deleteApartment } from '../services/apiApartments';
+import toast from 'react-hot-toast';
 
 export const Apartments = () => {
 	const queryClient = useQueryClient();
@@ -17,12 +18,13 @@ export const Apartments = () => {
 		useMutation({
 			mutationFn: (id) => deleteApartment(id),
 			onSuccess: () => {
+				toast.success('Apartment deleted successfully');
 				queryClient.invalidateQueries({
 					queryKey: ['apartments'],
 				});
 			},
 			onError: (error) => {
-				alert('Error deleting apartment:', error);
+				toast.error('Error deleting apartment:', error);
 			},
 		});
 	if (isLoading) {
