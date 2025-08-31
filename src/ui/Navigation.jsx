@@ -8,54 +8,34 @@ import {
 } from 'react-icons/hi2';
 
 export const Navigation = () => {
+	// Define nav items with proper typing
+	const navItems = [
+		{ name: 'Home', icon: HiHome, path: '/dashboard' },
+		{ name: 'Bookings', icon: HiCalendarDays, path: '/bookings' },
+		{ name: 'Apartments', icon: HiHomeModern, path: '/apartments' },
+		{ name: 'Users', icon: HiUsers, path: '/users' },
+		{ name: 'Settings', icon: HiCog6Tooth, path: '/settings' },
+	];
+
 	return (
-		<nav className="z-10 text-xl">
-			<ul className="flex flex-col gap-10 p-4">
-				<li>
-					<NavLink
-						to="/dashboard"
-						className="hover:text-accent-400 transition-colors flex items-center gap-4 font-semibold text-primary-200"
-					>
-						<HiHome />
-						<span>Home</span>
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						to="/bookings"
-						className="hover:text-accent-400 transition-colors flex items-center gap-4 font-semibold text-primary-200"
-					>
-						<HiCalendarDays />
-						<span>Bookings</span>
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						to="/apartments"
-						className="hover:text-accent-400 transition-colors flex items-center gap-4 font-semibold text-primary-200"
-					>
-						<HiHomeModern />
-						<span>Apartments</span>
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						to="/users"
-						className="hover:text-accent-400 transition-colors flex items-center gap-4 font-semibold text-primary-200"
-					>
-						<HiUsers />
-						<span>Users</span>
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						to="/settings"
-						className="hover:text-accent-400 transition-colors flex items-center gap-4 font-semibold text-primary-200"
-					>
-						<HiCog6Tooth />
-						<span>Settings</span>
-					</NavLink>
-				</li>
+		<nav className="w-full text-lg text-gray-600">
+			<ul className="flex flex-col p-4">
+				{navItems.map((item) => (
+					<li key={item.path}>
+						<NavLink
+							to={item.path}
+							className="flex w-full items-center text-primary-200 hover:text-accent-400 transition-colors"
+						>
+							<div className="flex justify-center items-center">
+								<item.icon className="w-6 h-6 my-3" />
+							</div>
+
+							<div className="pl-2 hidden md:block font-semibold">
+								{item.name}
+							</div>
+						</NavLink>
+					</li>
+				))}
 			</ul>
 		</nav>
 	);
