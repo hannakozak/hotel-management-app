@@ -22,7 +22,7 @@ export const Apartments = () => {
 
 			{showForm && (
 				<div className="mb-8 bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-					<CreateApartmentForm />
+					<CreateApartmentForm setShowForm={setShowForm} />
 				</div>
 			)}
 

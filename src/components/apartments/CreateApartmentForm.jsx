@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useCreateApartment } from './useCreateApartment';
 import { useEditApartment } from './useEditApartment';
 
-export const CreateApartmentForm = ({ apartmentToEdit = {} }) => {
+export const CreateApartmentForm = ({ apartmentToEdit = {}, setShowForm }) => {
 	const { isCreating, createApartment } = useCreateApartment();
 	const { isEditing, editApartment } = useEditApartment();
 	const isWorking = isCreating || isEditing;
@@ -21,9 +21,23 @@ export const CreateApartmentForm = ({ apartmentToEdit = {} }) => {
 		if (isEditSession)
 			editApartment(
 				{ newApartmentData: { ...data, image }, id: editId },
-				{ onSuccess: () => reset() }
+				{
+					onSuccess: () => {
+						reset();
+						setShowForm(false);
+					},
+				}
 			);
-		else createApartment({ ...data, image }, { onSuccess: () => reset() });
+		else
+			createApartment(
+				{ ...data, image },
+				{
+					onSuccess: () => {
+						reset();
+						setShowForm(false);
+					},
+				}
+			);
 	}
 
 	function onError() {
@@ -35,7 +49,6 @@ export const CreateApartmentForm = ({ apartmentToEdit = {} }) => {
 			onSubmit={handleSubmit(onSubmit, onError)}
 			className=" w-full space-y-6 bg-white p-8 rounded-xl shadow-md max-w-2xl mx-auto"
 		>
-			{/* Cabin name */}
 			<div className="flex flex-col gap-1">
 				<label htmlFor="name" className="font-medium text-gray-700">
 					Cabin name
@@ -52,7 +65,6 @@ export const CreateApartmentForm = ({ apartmentToEdit = {} }) => {
 				)}
 			</div>
 
-			{/* Maximum capacity */}
 			<div className="flex flex-col gap-1">
 				<label htmlFor="maxCapacity" className="font-medium text-gray-700">
 					Maximum capacity
@@ -139,7 +151,7 @@ export const CreateApartmentForm = ({ apartmentToEdit = {} }) => {
 
 			<div className="flex flex-col gap-1">
 				<label htmlFor="image" className="font-medium text-gray-700">
-					Cabin photo
+					Apartment photo
 				</label>
 				<input
 					type="file"

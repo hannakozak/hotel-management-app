@@ -20,7 +20,7 @@ export const ApartmentCard = ({ apartment }) => {
 		description,
 	} = apartment;
 
-	function handleDuplicate() {
+	const handleDuplicate = () => {
 		createApartment({
 			name: `Copy of ${name}`,
 			maxCapacity,
@@ -29,7 +29,7 @@ export const ApartmentCard = ({ apartment }) => {
 			image,
 			description,
 		});
-	}
+	};
 
 	return (
 		<>
@@ -89,7 +89,10 @@ export const ApartmentCard = ({ apartment }) => {
 
 			{showForm && (
 				<div className="bg-gray-50 border-t border-gray-200 px-4 py-4">
-					<CreateApartmentForm apartmentToEdit={apartment} />
+					<CreateApartmentForm
+						apartmentToEdit={apartment}
+						setShowForm={setShowForm}
+					/>
 				</div>
 			)}
 		</>
