@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useCreateApartment } from './useCreateApartment';
 import { useEditApartment } from './useEditApartment';
 
-export const CreateApartmentForm = ({ apartmentToEdit = {}, setShowForm }) => {
+export const CreateApartmentForm = ({ apartmentToEdit = {} }) => {
 	const { isCreating, createApartment } = useCreateApartment();
 	const { isEditing, editApartment } = useEditApartment();
 	const isWorking = isCreating || isEditing;
@@ -24,7 +24,6 @@ export const CreateApartmentForm = ({ apartmentToEdit = {}, setShowForm }) => {
 				{
 					onSuccess: () => {
 						reset();
-						setShowForm(false);
 					},
 				}
 			);
@@ -34,7 +33,6 @@ export const CreateApartmentForm = ({ apartmentToEdit = {}, setShowForm }) => {
 				{
 					onSuccess: () => {
 						reset();
-						setShowForm(false);
 					},
 				}
 			);
@@ -47,7 +45,7 @@ export const CreateApartmentForm = ({ apartmentToEdit = {}, setShowForm }) => {
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit, onError)}
-			className=" w-full space-y-6 bg-white p-8 rounded-xl shadow-md max-w-2xl mx-auto"
+			className=" w-full space-y-6 bg-white p-8 rounded-xl  max-w-2xl mx-auto"
 		>
 			<div className="flex flex-col gap-1">
 				<label htmlFor="name" className="font-medium text-gray-700">
