@@ -1,12 +1,11 @@
-import { useState } from 'react';
 import { formatCurrency } from '../../utils/formatCurrency';
 import { HiPencil, HiTrash, HiSquare2Stack } from 'react-icons/hi2';
 import { useDeleteApartment } from './useDeleteApartment';
 import { useCreateApartment } from './useCreateApartment';
 import { CreateApartmentForm } from './CreateApartmentForm';
+import { Modal } from '../../ui/Modal';
 
 export const ApartmentCard = ({ apartment }) => {
-	const [showForm, setShowForm] = useState(false);
 	const { isDeleting, deleteApartment } = useDeleteApartment();
 	const { isCreating, createApartment } = useCreateApartment();
 
@@ -71,30 +70,27 @@ export const ApartmentCard = ({ apartment }) => {
 					>
 						<HiSquare2Stack className="w-5 h-5" />
 					</button>
-					<button
-						onClick={() => setShowForm((show) => !show)}
-						className="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-yellow-600 transition"
-					>
-						<HiPencil className="w-5 h-5" />
-					</button>
-					<button
-						onClick={() => deleteApartment(apartmentId)}
-						disabled={isDeleting}
-						className="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-red-600 transition disabled:opacity-50"
-					>
-						<HiTrash className="w-5 h-5" />
-					</button>
+					<Modal>
+						<Modal.Open opens="edit">
+							<button className="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-yellow-600 transition">
+								<HiPencil className="w-5 h-5" />
+							</button>
+						</Modal.Open>
+
+						<Modal.Window name="edit">
+							<CreateApartmentForm apartmentToEdit={apartment} />
+						</Modal.Window>
+
+						<button
+							onClick={() => deleteApartment(apartmentId)}
+							disabled={isDeleting}
+							className="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-red-600 transition disabled:opacity-50"
+						>
+							<HiTrash className="w-5 h-5" />
+						</button>
+					</Modal>
 				</div>
 			</div>
-
-			{showForm && (
-				<div className="bg-gray-50 border-t border-gray-200 px-4 py-4">
-					<CreateApartmentForm
-						apartmentToEdit={apartment}
-						setShowForm={setShowForm}
-					/>
-				</div>
-			)}
 		</>
 	);
 };

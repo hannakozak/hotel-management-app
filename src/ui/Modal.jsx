@@ -34,7 +34,6 @@ const Window = ({ children, name }) => {
 				ref={ref}
 				className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-8 shadow-xl transition-all"
 			>
-				{/* Close button */}
 				<button
 					onClick={close}
 					className="absolute top-4 right-5 rounded-md p-1.5 text-gray-500 hover:bg-gray-100"
