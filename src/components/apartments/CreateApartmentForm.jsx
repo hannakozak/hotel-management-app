@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useCreateApartment } from './useCreateApartment';
 import { useEditApartment } from './useEditApartment';
 
-export const CreateApartmentForm = ({ apartmentToEdit = {} }) => {
+export const CreateApartmentForm = ({ apartmentToEdit = {}, onCloseModal }) => {
 	const { isCreating, createApartment } = useCreateApartment();
 	const { isEditing, editApartment } = useEditApartment();
 	const isWorking = isCreating || isEditing;
@@ -168,6 +168,10 @@ export const CreateApartmentForm = ({ apartmentToEdit = {} }) => {
 			<div className="flex justify-end gap-3">
 				<button
 					type="reset"
+					onClick={() => {
+						onCloseModal();
+						reset();
+					}}
 					className="px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100 transition disabled:opacity-50"
 				>
 					Cancel

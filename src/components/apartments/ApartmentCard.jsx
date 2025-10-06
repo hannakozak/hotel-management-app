@@ -4,6 +4,7 @@ import { useDeleteApartment } from './useDeleteApartment';
 import { useCreateApartment } from './useCreateApartment';
 import { CreateApartmentForm } from './CreateApartmentForm';
 import { Modal } from '../../ui/Modal';
+import { DeleteConfirm } from '../../ui/DeleteConfirm';
 
 export const ApartmentCard = ({ apartment }) => {
 	const { isDeleting, deleteApartment } = useDeleteApartment();
@@ -80,14 +81,18 @@ export const ApartmentCard = ({ apartment }) => {
 						<Modal.Window name="edit">
 							<CreateApartmentForm apartmentToEdit={apartment} />
 						</Modal.Window>
-
-						<button
-							onClick={() => deleteApartment(apartmentId)}
-							disabled={isDeleting}
-							className="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-red-600 transition disabled:opacity-50"
-						>
-							<HiTrash className="w-5 h-5" />
-						</button>
+						<Modal.Open opens="delete">
+							<button className="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-red-600 transition disabled:opacity-50">
+								<HiTrash className="w-5 h-5" />
+							</button>
+						</Modal.Open>
+						<Modal.Window name="delete">
+							<DeleteConfirm
+								resourceName="apartment"
+								onConfirm={() => deleteApartment(apartmentId)}
+								disabled={isDeleting}
+							/>
+						</Modal.Window>
 					</Modal>
 				</div>
 			</div>
