@@ -1,5 +1,3 @@
-import { Navigation } from './Navigation.jsx';
-
 export const Header = () => {
 	return (
 		<div className=" px-8 py-5 h-5">
