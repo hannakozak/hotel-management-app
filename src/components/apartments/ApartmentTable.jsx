@@ -1,11 +1,26 @@
 import { ApartmentRow } from './ApartmentRow';
 import { useApartments } from './useApartments';
 import { Table } from '../../ui/Table';
+import { useSearchParams } from 'react-router-dom';
 
 export const ApartmentTable = () => {
 	const { isLoading, apartments } = useApartments();
+	const [searchParams] = useSearchParams();
 
 	if (isLoading) return <div>Loading</div>;
+
+	const filterValue = searchParams.get('discount') || 'all';
+
+	let filteredApartments;
+	if (filterValue === 'all') filteredApartments = apartments;
+	if (filterValue === 'no-discount')
+		filteredApartments = apartments.filter(
+			(apartment) => apartment.discount === 0
+		);
+	if (filterValue === 'with-discount')
+		filteredApartments = apartments.filter(
+			(apartment) => apartment.discount > 0
+		);
 
 	return (
 		<Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
@@ -18,7 +33,7 @@ export const ApartmentTable = () => {
 				<div></div>
 			</Table.Header>
 			<Table.Body
-				data={apartments}
+				data={filteredApartments}
 				render={(apartment) => (
 					<ApartmentRow apartment={apartment} key={apartment.id} />
 				)}
