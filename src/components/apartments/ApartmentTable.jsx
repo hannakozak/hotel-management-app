@@ -22,6 +22,13 @@ export const ApartmentTable = () => {
 			(apartment) => apartment.discount > 0
 		);
 
+	const sortBy = searchParams.get('sortBy') || 'startDate-asc';
+	const [field, direction] = sortBy.split('-');
+	const modifier = direction === 'asc' ? 1 : -1;
+	const sortedApartments = filteredApartments.sort(
+		(a, b) => (a[field] - b[field]) * modifier
+	);
+
 	return (
 		<Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
 			<Table.Header>
@@ -33,13 +40,12 @@ export const ApartmentTable = () => {
 				<div></div>
 			</Table.Header>
 			<Table.Body
-				data={filteredApartments}
+				data={sortedApartments}
 				render={(apartment) => (
 					<ApartmentRow apartment={apartment} key={apartment.id} />
 				)}
 			/>
 			<Table.Footer>
-				{' '}
 				<div className="pr-3">Total</div> <div> {apartments.length}</div>
 			</Table.Footer>
 		</Table>
