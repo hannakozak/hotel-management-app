@@ -4,9 +4,9 @@ export const Select = ({ options, value, onChange, ...props }) => {
 			value={value}
 			onChange={onChange}
 			className="
-						w-full appearance-none rounded-lg border border-gray-300
+						appearance-none rounded-lg border border-gray-300
 						bg-white px-3 py-2 text-sm text-gray-800 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200
-						shadow-sm transition-all
+						transition-all
 						focus:border-blue-500 focus:outline-none
 					"
 			{...props}

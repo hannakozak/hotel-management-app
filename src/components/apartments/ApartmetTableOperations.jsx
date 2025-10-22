@@ -3,7 +3,7 @@ import { SortBy } from '../../ui/SortBy';
 
 export const ApartmentTableOperations = () => {
 	return (
-		<div className="flex flex-wrap gap-2 items-center border border-gray-200 bg-white shadow-sm rounded-md p-2">
+		<div className="flex justify-between gap-2 items-center p-2">
 			<Filter
 				filterField="discount"
 				options={[

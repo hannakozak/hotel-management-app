@@ -11,7 +11,7 @@ export const Filter = ({ filterField, options }) => {
 	}
 
 	return (
-		<div className="flex gap-1 border border-gray-200 bg-white shadow-sm rounded-md p-1">
+		<div className="flex gap-1 border border-gray-200 bg-white rounded-md p-1">
 			{options.map((option) => {
 				const isActive = option.value === currentFilter;
 				return (
@@ -19,7 +19,7 @@ export const Filter = ({ filterField, options }) => {
 						key={option.value}
 						onClick={() => handleClick(option.value)}
 						disabled={isActive}
-						className={`rounded-md font-medium text-sm px-3 py-1 transition-all
+						className={`font-medium text-sm px-3 py-1 transition-all
               ${
 								isActive
 									? 'bg-blue-600 text-white cursor-default'
