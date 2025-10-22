@@ -8,7 +8,6 @@ import {
 } from 'react-icons/hi2';
 
 export const Navigation = () => {
-	// Define nav items with proper typing
 	const navItems = [
 		{ name: 'Home', icon: HiHome, path: '/dashboard' },
 		{ name: 'Bookings', icon: HiCalendarDays, path: '/bookings' },
