@@ -1,3 +1,5 @@
+import { BookingTable } from '../components/bookings/BookingsTable';
+
 export const Bookings = () => {
 	return (
 		<main className="container mx-auto p-4">
@@ -6,6 +8,7 @@ export const Bookings = () => {
 				This is the bookings page where users can view and manage their hotel
 				bookings.
 			</p>
+			<BookingTable />
 		</main>
 	);
 };

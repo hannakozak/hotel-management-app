@@ -34,13 +34,10 @@ export async function createEditApartment(newApartment, id) {
 		? newApartment.image
 		: `${supabase.supabaseUrl}/storage/v1/object/public/apartments-images/${imageName}`;
 
-	// 1. Create/edit apartment
 	let query = supabase.from('apartments');
 
-	// A) CREATE
 	if (!id) query = query.insert([{ ...newApartment, image: imagePath }]);
 
-	// B) EDIT
 	if (id)
 		query = query.update({ ...newApartment, image: imagePath }).eq('id', id);
 
@@ -51,14 +48,12 @@ export async function createEditApartment(newApartment, id) {
 		throw new Error('Cabin could not be created');
 	}
 
-	// 2. Upload image
 	if (hasImagePath) return data;
 
 	const { error: storageError } = await supabase.storage
 		.from('apartments-images')
 		.upload(imageName, newApartment.image);
 
-	// 3. Delete the apartment IF there was an error uplaoding image
 	if (storageError) {
 		await supabase.from('apartments').delete().eq('id', data.id);
 		console.error(storageError);
