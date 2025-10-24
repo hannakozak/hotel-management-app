@@ -20,24 +20,24 @@ export const BookingRow = ({
 	},
 }) => {
 	const statusColors = {
-		unconfirmed: 'bg-blue-100 text-blue-700',
-		'checked-in': 'bg-green-100 text-green-700',
+		unconfirmed: 'text-teal-600',
+		'checked-in': 'bg-green-100 text-teal-900',
 		'checked-out': 'bg-gray-200 text-gray-700',
 	};
 
 	return (
 		<>
-			<td className="font-semibold text-gray-700 text-base">{apartmentName}</td>
+			<td className="font-semibold text-base">{apartmentName}</td>
 			<td className="flex flex-col gap-0.5">
 				<span className="font-medium">{guestName}</span>
-				<span className="text-xs text-gray-500">{email}</span>
+				<span className="text-xs">{email}</span>
 			</td>
 			<td className="flex flex-col gap-0.5">
 				<span className="font-medium">
 					{format(new Date(startDate), 'MMM dd yyyy')} —
 					{format(new Date(endDate), 'MMM dd yyyy')}
 				</span>
-				<span className="text-xs text-gray-500">{numNights} night stay</span>
+				<span className="text-xs">{numNights} night stay</span>
 			</td>
 
 			<td>

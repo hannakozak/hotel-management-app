@@ -155,7 +155,7 @@ export const CreateApartmentForm = ({ apartmentToEdit = {}, onCloseModal }) => {
 					type="file"
 					id="image"
 					accept="image/*"
-					className="file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+					className="file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-teal-700 hover:file:bg-blue-100"
 					{...register('image', {
 						required: isEditSession ? false : 'This field is required',
 					})}
@@ -178,7 +178,7 @@ export const CreateApartmentForm = ({ apartmentToEdit = {}, onCloseModal }) => {
 				</button>
 				<button
 					disabled={isWorking}
-					className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition disabled:opacity-50"
+					className="px-4 py-2 rounded-md bg-teal-600 text-white hover:bg-teal-700 transition disabled:opacity-50"
 				>
 					{isEditSession ? 'Edit Apartment' : 'Create new apartment'}
 				</button>

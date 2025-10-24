@@ -5,10 +5,7 @@ const TableContext = createContext();
 export const Table = ({ columns, children }) => {
 	return (
 		<TableContext.Provider value={{ columns }}>
-			<div
-				role="table"
-				className="border border-gray-200 text-sm bg-white rounded-lg overflow-hidden"
-			>
+			<div role="table" className="text-sm bg-white rounded-lg overflow-hidden">
 				{children}
 			</div>
 		</TableContext.Provider>
@@ -20,7 +17,7 @@ export const Header = ({ children }) => {
 	return (
 		<header
 			role="row"
-			className={`grid items-center gap-x-6 px-6 py-4 bg-gray-50 border-b border-gray-100 uppercase tracking-wide font-semibold text-gray-600`}
+			className={`grid font-heading items-center gap-x-6 px-6 py-4 border-b border-gray-500 tracking-wide font-semibold `}
 			style={{ gridTemplateColumns: columns }}
 		>
 			{children}
@@ -33,7 +30,7 @@ export const Row = ({ children }) => {
 	return (
 		<div
 			role="row"
-			className={`grid items-center gap-x-6 px-6 py-3 border-b last:border-0 border-gray-100`}
+			className={`font-body grid items-center gap-x-6 px-6 py-6 border-b last:border-0 border-gray-500`}
 			style={{ gridTemplateColumns: columns }}
 		>
 			{children}
@@ -44,7 +41,7 @@ export const Row = ({ children }) => {
 export const Body = ({ data, render }) => {
 	if (!data?.length)
 		return (
-			<p className="text-center text-base font-medium text-gray-700 my-6">
+			<p className="text-center text-base font-medium my-6">
 				No data to show at the moment
 			</p>
 		);

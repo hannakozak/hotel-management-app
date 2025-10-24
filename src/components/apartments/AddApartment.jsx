@@ -6,7 +6,7 @@ export const AddApartment = () => {
 		<div>
 			<Modal>
 				<Modal.Open opens="apartment-form">
-					<button className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">
+					<button className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow hover:bg-teal-700 focus:outline-none focus:ring focus:ring-teal-300">
 						Add new apartment
 					</button>
 				</Modal.Open>

@@ -22,8 +22,8 @@ export const Filter = ({ filterField, options }) => {
 						className={`font-medium text-sm px-3 py-1 transition-all
               ${
 								isActive
-									? 'bg-blue-600 text-white cursor-default'
-									: 'bg-white text-gray-700 hover:bg-blue-600 hover:text-white'
+									? 'bg-teal-600 text-white cursor-default'
+									: 'bg-white text-gray-700 hover:bg-teal-600 hover:text-white'
 							}`}
 					>
 						{option.label}

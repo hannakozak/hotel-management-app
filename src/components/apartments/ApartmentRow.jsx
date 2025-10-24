@@ -41,18 +41,14 @@ export const ApartmentRow = ({ apartment }) => {
 				className="block w-16 aspect-[3/2] object-cover object-center transform scale-150 -translate-x-2"
 			/>
 
-			<div className="text-base font-semibold text-gray-600 font-[Sono]">
-				{name}
-			</div>
+			<div className="text-gray-600">{name}</div>
 
 			<div className="text-gray-700">Fits up to {maxCapacity} guests</div>
 
-			<div className="font-semibold font-[Sono] text-gray-800">
-				{formatCurrency(regularPrice)}
-			</div>
+			<div className="text-gray-600">{formatCurrency(regularPrice)}</div>
 
 			{discount ? (
-				<div className="font-medium font-[Sono] text-green-700">
+				<div className="font-medium text-teal-700">
 					{formatCurrency(discount)}
 				</div>
 			) : (
