@@ -35,20 +35,22 @@ export const ApartmentRow = ({ apartment }) => {
 
 	return (
 		<Table.Row>
-			<img
-				src={image}
-				alt={name}
-				className="block w-16 aspect-[3/2] object-cover object-center transform scale-150 -translate-x-2"
-			/>
+			<div className="flex flex-col items-left pl-3 sm:flex-row gap-y-3">
+				<img
+					src={image}
+					alt={name}
+					className="block w-16 aspect-[3/2] object-cover object-center transform scale-150 -translate-x-2"
+				/>
 
-			<div className="text-gray-600">{name}</div>
+				<div className="text-gray-600 sm:pl-4">{name}</div>
+			</div>
 
-			<div className="text-gray-700">Fits up to {maxCapacity} guests</div>
+			<div className="text-gray-700 p-3">{maxCapacity}</div>
 
-			<div className="text-gray-600">{formatCurrency(regularPrice)}</div>
+			<div className="text-gray-600 p-3">{formatCurrency(regularPrice)}</div>
 
 			{discount ? (
-				<div className="font-medium text-teal-700">
+				<div className="font-medium p-3 text-teal-700">
 					{formatCurrency(discount)}
 				</div>
 			) : (

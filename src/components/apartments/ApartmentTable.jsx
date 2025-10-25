@@ -30,14 +30,13 @@ export const ApartmentTable = () => {
 	);
 
 	return (
-		<Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+		<Table columns="2fr 1fr 1fr 1fr 1fr" className="md:px-14">
 			<Table.Header>
-				<div></div>
 				<div>Apartment</div>
 				<div>Capacity</div>
 				<div>Price</div>
 				<div>Discount</div>
-				<div></div>
+				<div className="text-right">Actions</div>
 			</Table.Header>
 			<Table.Body
 				data={sortedApartments}

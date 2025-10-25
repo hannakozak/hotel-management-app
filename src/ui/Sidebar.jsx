@@ -3,7 +3,7 @@ import { Navigation } from './Navigation.jsx';
 export const Sidebar = () => {
 	return (
 		<aside className="sm:row-span-full flex flex-row sm:flex-col sm:justify-start items-center sm:shadow-md">
-			<div className="sm:px-6 w-full sm:w-52">
+			<div className="sm:px-6 w-full sm:w-52 -ml-6">
 				<img
 					src="/logo.png"
 					alt="Logo"

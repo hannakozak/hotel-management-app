@@ -5,7 +5,7 @@ const TableContext = createContext();
 export const Table = ({ columns, children }) => {
 	return (
 		<TableContext.Provider value={{ columns }}>
-			<div role="table" className="text-sm bg-white rounded-lg overflow-hidden">
+			<div role="table" className="px-1 sm:py-3 text-sm bg-white rounded-lg ">
 				{children}
 			</div>
 		</TableContext.Provider>
@@ -17,7 +17,7 @@ export const Header = ({ children }) => {
 	return (
 		<header
 			role="row"
-			className={`grid font-heading items-center gap-x-6 px-6 py-4 border-b border-gray-500 tracking-wide font-semibold `}
+			className={`grid font-heading items-center gap-x-3 sm:px-6 py-4 border-b border-gray-500 tracking-wide font-semibold `}
 			style={{ gridTemplateColumns: columns }}
 		>
 			{children}
@@ -30,7 +30,7 @@ export const Row = ({ children }) => {
 	return (
 		<div
 			role="row"
-			className={`font-body grid items-center gap-x-6 px-6 py-6 border-b last:border-0 border-gray-500`}
+			className={`font-body grid items-center sm:gap-x-6 px-3 py-6 border-b last:border-0 border-gray-500`}
 			style={{ gridTemplateColumns: columns }}
 		>
 			{children}
