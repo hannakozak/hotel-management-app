@@ -3,12 +3,7 @@ export const Select = ({ options, value, onChange, ...props }) => {
 		<select
 			value={value}
 			onChange={onChange}
-			className="
-						appearance-none rounded-lg border border-gray-300
-						bg-white px-3 py-2 text-sm text-gray-800 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200
-						transition-all
-						focus:border-blue-500 focus:outline-none
-					"
+			className="w-36 appearance-none rounded-md border border-gray-200 bg-white p-1 smp-2 text-xs text-gray-800 dark:text-gray-200 transition-all focus:border-teal-600 focus:outline-none"
 			{...props}
 		>
 			{options.map((option) => (

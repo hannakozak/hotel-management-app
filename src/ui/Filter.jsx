@@ -19,7 +19,7 @@ export const Filter = ({ filterField, options }) => {
 						key={option.value}
 						onClick={() => handleClick(option.value)}
 						disabled={isActive}
-						className={`font-medium text-sm px-3 py-1 transition-all
+						className={`font-small text-xs px-3 sm:py-1 transition-all
               ${
 								isActive
 									? 'bg-teal-600 text-white cursor-default'

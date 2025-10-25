@@ -3,7 +3,7 @@ import { SortBy } from '../../ui/SortBy';
 
 export const ApartmentTableOperations = () => {
 	return (
-		<div className="flex justify-between gap-2 items-center p-2">
+		<div className="flex flex-col sm:flex-row justify-between gap-2 items-center p-2">
 			<Filter
 				filterField="discount"
 				options={[

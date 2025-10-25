@@ -1,5 +1,4 @@
 import supabase from './supabase';
-const PAGE_SIZE = 10;
 
 export async function getBookings() {
 	let query = supabase

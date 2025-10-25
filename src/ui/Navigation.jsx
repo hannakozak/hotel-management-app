@@ -17,16 +17,16 @@ export const Navigation = () => {
 	];
 
 	return (
-		<nav className="w-full text-lg text-gray-600">
-			<ul className="flex flex-col p-4">
+		<nav className="w-full text-md text-gray-600">
+			<ul className="flex sm:flex-col sm:p-4 justify-end">
 				{navItems.map((item) => (
 					<li key={item.path}>
 						<NavLink
 							to={item.path}
-							className="flex w-full items-center text-primary-200 hover:text-accent-400 transition-colors"
+							className="flex w-full items-end sm:items-center text-primary-200 hover:text-accent-400 transition-colors"
 						>
 							<div className="flex justify-center items-center">
-								<item.icon className="w-6 h-6 my-3" />
+								<item.icon className="w-6 h-6 px-1 my-3" />
 							</div>
 
 							<div className="pl-2 hidden md:block font-semibold">
