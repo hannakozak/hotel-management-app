@@ -1,5 +1,6 @@
 import { BookingRow } from './BookingRow';
 import { useBookings } from './useBookings';
+import { Table } from '../../ui/Table';
 
 export const BookingTable = () => {
 	const { bookings, isLoading } = useBookings();
@@ -13,33 +14,22 @@ export const BookingTable = () => {
 		);
 
 	return (
-		<div className="p-4 ">
-			<div className="overflow-x-auto">
-				<table className="min-w-full text-left text-sm">
-					<thead className="border-b ">
-						<tr className="grid grid-cols-[0.6fr_1.6fr_2fr_1.4fr_1.4fr_3.2rem] gap-2 px-2 py-3 font-semibold text-gray-700">
-							<th>Cabin</th>
-							<th>Guest</th>
-							<th>Dates</th>
-							<th>Status</th>
-							<th>Amount</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						{bookings.map((booking) => (
-							<tr
-								key={booking.id}
-								className="grid grid-cols-[0.6fr_1.6fr_2fr_1.4fr_1.4fr_3.2rem] gap-2 border-b px-2 py-3"
-							>
-								<BookingRow booking={booking} />
-							</tr>
-						))}
-					</tbody>
-				</table>
-			</div>
-		</div>
+		<Table columns="1fr 1fr 2fr 1fr 1fr 1fr" className="px-2">
+			<Table.Header>
+				<div>Cabin</div>
+				<div>Guest</div>
+				<div>Dates</div>
+				<div>Status</div>
+				<div>Amount</div>
+				<div className="text-right">Actions</div>
+			</Table.Header>
+			<Table.Body
+				data={bookings}
+				render={(booking) => <BookingRow booking={booking} key={booking.id} />}
+			/>
+			<Table.Footer>
+				<div className="pr-3">Total</div> <div> {bookings.length}</div>
+			</Table.Footer>
+		</Table>
 	);
 };
-
-export default BookingTable;

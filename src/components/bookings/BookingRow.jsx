@@ -5,11 +5,14 @@ import {
 	HiEye,
 	HiTrash,
 } from 'react-icons/hi2';
-
+import { Table } from '../../ui/Table';
 import { formatCurrency } from '../../utils/formatCurrency';
+import { Modal } from '../../ui/Modal';
+import { Menus } from '../../ui/Menus';
 
 export const BookingRow = ({
 	booking: {
+		id: bookingId,
 		startDate,
 		endDate,
 		numNights,
@@ -26,49 +29,52 @@ export const BookingRow = ({
 	};
 
 	return (
-		<>
-			<td className="font-semibold text-base">{apartmentName}</td>
-			<td className="flex flex-col gap-0.5">
-				<span className="font-medium">{guestName}</span>
+		<Table.Row>
+			<div className="font-semibold font-small text-base">{apartmentName}</div>
+			<div className="flex flex-col gap-0.5 text-center">
+				<span className="font-small">{guestName}</span>
 				<span className="text-xs">{email}</span>
-			</td>
-			<td className="flex flex-col gap-0.5">
-				<span className="font-medium">
-					{format(new Date(startDate), 'MMM dd yyyy')} —
+			</div>
+			<div className="flex flex-col gap-0.5 text-center">
+				<span className="font-small">
+					{format(new Date(startDate), 'MMM dd yyyy')}-
 					{format(new Date(endDate), 'MMM dd yyyy')}
 				</span>
 				<span className="text-xs">{numNights} night stay</span>
-			</td>
+			</div>
 
-			<td>
+			<div>
 				<span
 					className={`px-2 py-1 rounded-md text-xs font-medium capitalize ${statusColors[status]}`}
 				>
 					{status.replace('-', ' ')}
 				</span>
-			</td>
-			<td className="font-semibold">{formatCurrency(totalPrice)}</td>
-			<td className="text-right relative">
-				<div className="flex justify-end gap-2">
-					<button className="text-gray-600 hover:text-teal-600">
-						<HiEye className="w-5 h-5" />
-					</button>
-					{status === 'unconfirmed' && (
-						<button className="text-gray-600 hover:text-teal-600">
-							<HiArrowDownOnSquare className="w-5 h-5" />
-						</button>
-					)}
-					{status === 'checked-in' && (
-						<button className="text-gray-600 hover:text-teal-600">
-							<HiArrowUpOnSquare className="w-5 h-5" />
-						</button>
-					)}
+			</div>
+			<div className="font-semibold">{formatCurrency(totalPrice)}</div>
+			<Modal className="text-right relative">
+				<Menus className="flex justify-end gap-2">
+					<Menus.Toggle id={bookingId} />
+					<Menus.List id={bookingId}>
+						<Menus.Button className="text-gray-600 hover:text-teal-600">
+							<HiEye className="w-5 h-5" />
+						</Menus.Button>
+						{status === 'unconfirmed' && (
+							<Menus.Button className="text-gray-600 hover:text-teal-600">
+								<HiArrowDownOnSquare className="w-5 h-5" />
+							</Menus.Button>
+						)}
+						{status === 'checked-in' && (
+							<Menus.Button className="text-gray-600 hover:text-teal-600">
+								<HiArrowUpOnSquare className="w-5 h-5" />
+							</Menus.Button>
+						)}
 
-					<button className="text-gray-600 hover:text-teal-600">
-						<HiTrash className="w-5 h-5" />
-					</button>
-				</div>
-			</td>
-		</>
+						<Menus.Button className="text-gray-600 hover:text-teal-600">
+							<HiTrash className="w-5 h-5" />
+						</Menus.Button>
+					</Menus.List>
+				</Menus>
+			</Modal>
+		</Table.Row>
 	);
 };

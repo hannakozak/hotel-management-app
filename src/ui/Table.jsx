@@ -17,7 +17,7 @@ export const Header = ({ children }) => {
 	return (
 		<header
 			role="row"
-			className={`grid font-heading items-center gap-x-3 sm:px-6 py-4 border-b border-gray-500 tracking-wide font-semibold `}
+			className={`hidden sm:grid font-heading items-center gap-x-3 sm:px-6 py-4 border-b border-gray-500 tracking-wide font-semibold `}
 			style={{ gridTemplateColumns: columns }}
 		>
 			{children}
@@ -30,7 +30,7 @@ export const Row = ({ children }) => {
 	return (
 		<div
 			role="row"
-			className={`font-body grid items-center sm:gap-x-6 px-3 py-6 border-b last:border-0 border-gray-500`}
+			className={`flex flex-wrap  font-body sm:grid items-center gap-x-6 px-1 py-6 border-b last:border-0 border-gray-500`}
 			style={{ gridTemplateColumns: columns }}
 		>
 			{children}
