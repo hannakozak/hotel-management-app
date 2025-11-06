@@ -16,7 +16,7 @@ export const BookingTable = () => {
 	return (
 		<Table columns="1fr 1fr 2fr 1fr 1fr 1fr" className="px-2">
 			<Table.Header>
-				<div>Cabin</div>
+				<div>Apartment</div>
 				<div>Guest</div>
 				<div>Dates</div>
 				<div>Status</div>
