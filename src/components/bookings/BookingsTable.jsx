@@ -1,9 +1,10 @@
 import { BookingRow } from './BookingRow';
 import { useBookings } from './useBookings';
 import { Table } from '../../ui/Table';
+import { Pagination } from '../../ui/Pagination';
 
 export const BookingTable = () => {
-	const { bookings, isLoading } = useBookings();
+	const { bookings, isLoading, count } = useBookings();
 
 	if (isLoading)
 		return <div className="flex justify-center py-10">loading...</div>;
@@ -28,7 +29,7 @@ export const BookingTable = () => {
 				render={(booking) => <BookingRow booking={booking} key={booking.id} />}
 			/>
 			<Table.Footer>
-				<div className="pr-3">Total</div> <div> {bookings.length}</div>
+				<Pagination count={count} />
 			</Table.Footer>
 		</Table>
 	);
