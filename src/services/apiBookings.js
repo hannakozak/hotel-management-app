@@ -31,3 +31,28 @@ export async function getBookings({ filter, sortBy, page }) {
 
 	return { data, count };
 }
+
+export async function getBooking(id) {
+	const { data, error } = await supabase
+		.from('bookings')
+		.select('*, apartments(*), guests(*)')
+		.eq('id', id)
+		.single();
+
+	if (error) {
+		console.error(error);
+		throw new Error('Booking not found');
+	}
+
+	return data;
+}
+
+export async function deleteBooking(id) {
+	const { data, error } = await supabase.from('bookings').delete().eq('id', id);
+
+	if (error) {
+		console.error(error);
+		throw new Error('Booking could not be deleted');
+	}
+	return data;
+}

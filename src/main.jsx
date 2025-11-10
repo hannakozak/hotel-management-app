@@ -14,6 +14,7 @@ import { QueryClient } from '@tanstack/react-query';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
+import { Booking } from './pages/Booking.jsx';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -39,6 +40,7 @@ createRoot(document.getElementById('root')).render(
 						<Route path="users" element={<Users />} />
 						<Route path="settings" element={<Settings />} />
 						<Route path="account" element={<Account />} />
+						<Route path="bookings/:bookingId" element={<Booking />} />
 					</Route>
 
 					<Route path="login" element={<Login />} />

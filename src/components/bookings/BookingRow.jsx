@@ -9,6 +9,7 @@ import { Table } from '../../ui/Table';
 import { formatCurrency } from '../../utils/formatCurrency';
 import { Modal } from '../../ui/Modal';
 import { Menus } from '../../ui/Menus';
+import { useNavigate } from 'react-router-dom';
 
 export const BookingRow = ({
 	booking: {
@@ -22,6 +23,8 @@ export const BookingRow = ({
 		apartments: { name: apartmentName },
 	},
 }) => {
+	const navigate = useNavigate();
+
 	const statusColors = {
 		unconfirmed: 'text-teal-600',
 		'checked-in': 'bg-green-100 text-teal-900',
@@ -55,8 +58,12 @@ export const BookingRow = ({
 				<Menus className="flex justify-end gap-2">
 					<Menus.Toggle id={bookingId} />
 					<Menus.List id={bookingId}>
-						<Menus.Button className="text-gray-600 hover:text-teal-600">
-							<HiEye className="w-5 h-5" />
+						<Menus.Button
+							className="text-gray-600 hover:text-teal-600"
+							icon={<HiEye className="w-5 h-5" />}
+							onClick={() => navigate(`/bookings/${bookingId}`)}
+						>
+							See details
 						</Menus.Button>
 						{status === 'unconfirmed' && (
 							<Menus.Button className="text-gray-600 hover:text-teal-600">
