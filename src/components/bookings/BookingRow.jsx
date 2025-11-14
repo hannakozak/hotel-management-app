@@ -66,13 +66,21 @@ export const BookingRow = ({
 							See details
 						</Menus.Button>
 						{status === 'unconfirmed' && (
-							<Menus.Button className="text-gray-600 hover:text-teal-600">
-								<HiArrowDownOnSquare className="w-5 h-5" />
+							<Menus.Button
+								className="text-gray-600 hover:text-teal-600"
+								icon={<HiArrowDownOnSquare className="w-5 h-5" />}
+								onClick={() => navigate(`/checkin/${bookingId}`)}
+							>
+								check in
 							</Menus.Button>
 						)}
 						{status === 'checked-in' && (
-							<Menus.Button className="text-gray-600 hover:text-teal-600">
-								<HiArrowUpOnSquare className="w-5 h-5" />
+							<Menus.Button
+								className="text-gray-600 hover:text-teal-600"
+								icon={<HiArrowUpOnSquare className="w-5 h-5" />}
+								onClick={() => navigate(`/checkout/${bookingId}`)}
+							>
+								Check out
 							</Menus.Button>
 						)}
 

@@ -18,7 +18,7 @@ export const Navigation = () => {
 
 	return (
 		<nav className="w-full text-md text-gray-600">
-			<ul className="flex sm:flex-col sm:p-4 justify-end">
+			<ul className="flex sm:flex-col sm:p-4 justify-end sm:gap-4">
 				{navItems.map((item) => (
 					<li key={item.path}>
 						<NavLink

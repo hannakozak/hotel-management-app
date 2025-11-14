@@ -10,6 +10,7 @@ import { Dashboard } from './pages/Dashboard.jsx';
 import { Settings } from './pages/Settings.jsx';
 import { Users } from './pages/Users.jsx';
 import { PageNotFound } from './pages/PageNotFound.jsx';
+import { Checkin } from './pages/Checkin.jsx';
 import { QueryClient } from '@tanstack/react-query';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -41,6 +42,7 @@ createRoot(document.getElementById('root')).render(
 						<Route path="settings" element={<Settings />} />
 						<Route path="account" element={<Account />} />
 						<Route path="bookings/:bookingId" element={<Booking />} />
+						<Route path="checkin/:bookingId" element={<Checkin />} />
 					</Route>
 
 					<Route path="login" element={<Login />} />

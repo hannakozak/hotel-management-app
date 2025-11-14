@@ -5,10 +5,11 @@ import { HiArrowUpOnSquare } from 'react-icons/hi2';
 import { Modal } from '../../ui/Modal';
 import { DeleteConfirm } from '../../ui/DeleteConfirm';
 import { Tag } from '../../ui/Tag';
+import { useNavigate } from 'react-router-dom';
 
 export const BookingDetails = () => {
 	const { booking, isLoading } = useBooking();
-
+	const navigate = useNavigate();
 	const moveBack = useMoveBack();
 
 	if (isLoading) return <div>Loading...</div>;
@@ -37,7 +38,11 @@ export const BookingDetails = () => {
 			</div>
 
 			<div className="flex flex-wrap gap-3 justify-start sm:justify-end">
-				{status === 'unconfirmed' && <button>Check in</button>}
+				{status === 'unconfirmed' && (
+					<button onClick={() => navigate(`/checkin/${bookingId}`)}>
+						Check in
+					</button>
+				)}
 
 				{status === 'checked-in' && (
 					<button icon={<HiArrowUpOnSquare />}>Check out</button>
